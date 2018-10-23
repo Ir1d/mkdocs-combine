@@ -26,10 +26,10 @@ class XrefFilter(object):
         ret = []
         for line in lines:
             while True:
-                match = re.search(r'\[(.*?)\]\((.*?\.md)\)', line)
+                match = re.search(r'[^!]\[([^\]]*?)\]\((\/.*?)\)', line)
                 if match != None:
                     title = match.group(1)
-                    line = re.sub(r'\[.*?\]\(.*?\.md\)', title, line, count=1)
+                    line = re.sub(r'[^!]\[[^\]]*?\]\(\/[^\)]*?\)'', title, line, count=1)
                 else:
                     break
             ret.append(line)
